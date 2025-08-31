@@ -20,14 +20,19 @@ const PriceSection = () => {
   const timestamps = ["7:15 PM", "7:55 PM", "8:55 PM", "9:55 PM", "10:55 PM"];
 
   return (
-    <CustomCard>
-      <Flex justify="space-between" align="start">
-        <Stack>
-          <HStack color="black.80">
+    <CustomCard p={{ base: 6, md: 8 }} shadow="md" rounded="2xl" bg="white">
+      <Flex
+        justify="space-between"
+        align={{ base: "flex-start", md: "center" }}
+        flexDir={{ base: "column", md: "row" }}
+        mb={4}
+      >
+        <Stack spacing={3}>
+          <HStack color="gray.600">
             <Text fontSize="sm">Wallet Balances</Text>
           </HStack>
           <HStack
-            spacing={2}
+            spacing={4}
             align={{
               base: "flex-start",
               sm: "center",
@@ -38,52 +43,75 @@ const PriceSection = () => {
             }}
           >
             <HStack>
-              <Text textStyle="h2" fontWeight="medium">
+              <Text fontSize={{ base: "xl", md: "2xl" }} fontWeight="bold">
                 22.39401000
-              </Text>{" "}
-              <HStack fontWeight="medium" color="green.500">
-                <Icon as={BsArrowUpRight} />
-                <Text fontSize="sm" fontWeight="medium">
-                  22%
-                </Text>
-              </HStack>{" "}
+              </Text>
+              <HStack fontWeight="medium" color="green.500" spacing={1}>
+                <Icon as={BsArrowUpRight} w={4} h={4} />
+                <Text fontSize="sm">22%</Text>
+              </HStack>
             </HStack>
           </HStack>
         </Stack>
-        <HStack>
-          <Button leftIcon={<Icon as={AiFillPlusCircle} />}>Buy</Button>
-          <Button leftIcon={<Icon as={AiOutlineMinusCircle} />}>Sell</Button>
+
+        <HStack mt={{ base: 4, md: 0 }} spacing={3}>
+          <Button
+            leftIcon={<Icon as={AiFillPlusCircle} />}
+            colorScheme="green"
+            rounded="lg"
+            size={{ base: "md", md: "lg" }}
+            shadow="sm"
+          >
+            Buy
+          </Button>
+          <Button
+            leftIcon={<Icon as={AiOutlineMinusCircle} />}
+            colorScheme="red"
+            rounded="lg"
+            size={{ base: "md", md: "lg" }}
+            shadow="sm"
+          >
+            Sell
+          </Button>
         </HStack>
       </Flex>
-      <Tabs variant="soft-rounded">
-        <Flex justify="end">
-          <TabList bg="black.5" p="3px">
+
+      <Tabs variant="soft-rounded" colorScheme="purple">
+        <Flex justify="end" mb={2}>
+          <TabList
+            bg="gray.100"
+            p="3px"
+            borderRadius="lg"
+            overflow="hidden"
+            w={{ base: "100%", md: "auto" }}
+          >
             {["1H", "1D", "1W", "1M"].map((tab) => (
               <Tab
-                _selected={{ bg: "white" }}
+                _selected={{ bg: "white", color: "purple.500" }}
                 key={tab}
                 fontSize="sm"
-                p="6px"
-                borderRadius="4"
+                p="6px 12px"
+                borderRadius="md"
               >
                 {tab}
               </Tab>
             ))}
           </TabList>
         </Flex>
+
         <TabPanels>
-          <TabPanel>
-            <Image w="100%" src="/graph.svg" mt="3rem" />
-            <HStack justify="space-between">
+          <TabPanel p={0}>
+            <Image w="100%" src="/graph.svg" mt={6} borderRadius="md" />
+            <HStack justify="space-between" mt={2}>
               {timestamps.map((timestamp) => (
-                <Text key={timestamp} fontSize="sm" color="black.80">
+                <Text key={timestamp} fontSize="sm" color="gray.500">
                   {timestamp}
                 </Text>
               ))}
             </HStack>
           </TabPanel>
           <TabPanel>
-            <p>two!</p>
+            <Text>Two!</Text>
           </TabPanel>
         </TabPanels>
       </Tabs>

@@ -1,92 +1,97 @@
-import { Button, HStack, Icon, Stack, Tag, Text } from "@chakra-ui/react";
+import { Button, HStack, Icon, Stack, Tag, Text, Box } from "@chakra-ui/react";
 import React from "react";
 import {
   AiOutlineInfoCircle,
   AiOutlineArrowDown,
   AiOutlineArrowUp,
 } from "react-icons/ai";
+
 const PortfolioSection = () => {
   return (
-    <HStack
-      justify="space-between"
-      bg="white"
-      borderRadius="xl"
-      p="6"
-      align={{
-        base: "flex-start",
-        xl: "center",
-      }}
-      flexDir={{
-        base: "column",
-        xl: "row",
-      }}
-      spacing={{
-        base: 4,
-        xl: 0,
-      }}
+    <Box
+      bg="gray.50"
+      rounded="2xl"
+      p={{ base: 6, md: 8 }}
+      shadow="lg"
+      w="full"
     >
       <HStack
-        spacing={{
-          base: 0,
-          xl: 16,
-        }}
-        align={{
-          base: "flex-start",
-          xl: "center",
-        }}
-        flexDir={{
-          base: "column",
-          xl: "row",
-        }}
+        justify="space-between"
+        flexDir={{ base: "column", xl: "row" }}
+        align={{ base: "flex-start", xl: "center" }}
+        spacing={{ base: 4, xl: 0 }}
       >
-        <Stack>
-          <HStack color="black.80">
-            <Text fontSize="sm">Total Portfolio Value</Text>
-            <Icon as={AiOutlineInfoCircle} />
-          </HStack>
-          <Text textStyle="h2" fontWeight="medium">
-            ₹ 112,312.24
-          </Text>
-        </Stack>
+        {/* Portfolio & Wallet Info */}
+        <HStack
+          spacing={{ base: 0, xl: 16 }}
+          align={{ base: "flex-start", xl: "center" }}
+          flexDir={{ base: "column", xl: "row" }}
+          w="full"
+        >
+          {/* Total Portfolio Value */}
+          <Stack spacing={1}>
+            <HStack color="gray.600">
+              <Text fontSize="sm">Total Portfolio Value</Text>
+              <Icon as={AiOutlineInfoCircle} w={4} h={4} />
+            </HStack>
+            <Text fontSize={{ base: "xl", md: "2xl" }} fontWeight="bold" color="green.600">
+              ₹ 112,312.24
+            </Text>
+          </Stack>
 
-        <Stack>
-          <HStack color="black.80">
-            <Text fontSize="sm">Wallet Balances</Text>
-          </HStack>
-          <HStack
-            spacing={2}
-            align={{
-              base: "flex-start",
-              sm: "center",
-            }}
-            flexDir={{
-              base: "column",
-              sm: "row",
-            }}
+          {/* Wallet Balances */}
+          <Stack spacing={1}>
+            <HStack color="gray.600">
+              <Text fontSize="sm">Wallet Balances</Text>
+            </HStack>
+            <HStack
+              spacing={4}
+              align={{ base: "flex-start", sm: "center" }}
+              flexDir={{ base: "column", sm: "row" }}
+            >
+              <HStack>
+                <Text fontSize={{ base: "lg", md: "xl" }} fontWeight="semibold">
+                  22.39401000
+                </Text>
+                <Tag colorScheme="gray" fontWeight="medium" rounded="md">
+                  BTC
+                </Tag>
+              </HStack>
+              <HStack>
+                <Text fontSize={{ base: "lg", md: "xl" }} fontWeight="semibold">
+                  ₹ 1,300.00
+                </Text>
+                <Tag colorScheme="gray" fontWeight="medium" rounded="md">
+                  INR
+                </Tag>
+              </HStack>
+            </HStack>
+          </Stack>
+        </HStack>
+
+        {/* Deposit & Withdraw Buttons */}
+        <HStack spacing={3} mt={{ base: 4, xl: 0 }}>
+          <Button
+            leftIcon={<Icon as={AiOutlineArrowDown} />}
+            colorScheme="green"
+            rounded="lg"
+            size={{ base: "md", md: "lg" }}
+            shadow="sm"
           >
-            <HStack>
-              <Text textStyle="h2" fontWeight="medium">
-                22.39401000
-              </Text>{" "}
-              <Tag colorScheme="gray" fontWeight="medium">
-                BTC
-              </Tag>
-            </HStack>
-            <HStack>
-              <Text textStyle="h2" fontWeight="medium">
-                ₹ 1,300.00
-              </Text>{" "}
-              <Tag colorScheme="gray">INR</Tag>
-            </HStack>
-          </HStack>
-        </Stack>
+            Deposit
+          </Button>
+          <Button
+            leftIcon={<Icon as={AiOutlineArrowUp} />}
+            colorScheme="red"
+            rounded="lg"
+            size={{ base: "md", md: "lg" }}
+            shadow="sm"
+          >
+            Withdraw
+          </Button>
+        </HStack>
       </HStack>
-
-      <HStack>
-        <Button leftIcon={<Icon as={AiOutlineArrowDown} />}>Deposit</Button>
-        <Button leftIcon={<Icon as={AiOutlineArrowUp} />}>Withdraw</Button>
-      </HStack>
-    </HStack>
+    </Box>
   );
 };
 
